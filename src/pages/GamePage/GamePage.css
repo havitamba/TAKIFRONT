@@ -1,0 +1,340 @@
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 20px;
+  gap: 20px;
+  position: relative;
+}
+
+/* Opponents Section */
+.opponentsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  min-height: 120px;
+  align-items: flex-start;
+}
+
+.opponentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.opponentContainer.current-turn {
+  background: rgba(52, 152, 219, 0.15);
+  border: 2px solid #3498db;
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+  transform: scale(1.02);
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.current-turn .profile-pic {
+  border-color: #3498db;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(52, 152, 219, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+  }
+}
+
+.turn-indicator {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #e74c3c;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  animation: bounce 1s infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-5px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+}
+
+.opponentHand {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Center Game Area */
+.centerArea {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.gameCards {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.drawPile,
+.discardPile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Player Section */
+.playerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  min-height: 120px;
+  padding: 15px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.playerSection.current-turn {
+  background: rgba(46, 204, 113, 0.15);
+  border: 2px solid #2ecc71;
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.3);
+  transform: scale(1.02);
+}
+
+.playerSection.current-turn .profile-pic {
+  border-color: #2ecc71;
+  box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(46, 204, 113, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+  }
+}
+
+.playerSection .turn-indicator {
+  background: #2ecc71;
+}
+
+.playerHand {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.playerName {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid rgba(52, 152, 219, 0.3);
+}
+
+/* Current turn styling for player names */
+.current-turn .playerName {
+  background: rgba(255, 255, 255, 1);
+  border-color: #3498db;
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.playerSection.current-turn .playerName {
+  border-color: #2ecc71;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gameContainer {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .gameCards {
+    gap: 25px;
+  }
+
+  .opponentsSection {
+    gap: 20px;
+  }
+
+  .playerHand,
+  .opponentHand {
+    gap: 5px;
+  }
+
+  .cardLabel {
+    font-size: 12px;
+  }
+
+  .playerName {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+
+  .turn-indicator {
+    font-size: 9px;
+    padding: 3px 6px;
+    top: -8px;
+    right: -8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gameContainer {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .gameCards {
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .opponentsSection {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .playerHand,
+  .opponentHand {
+    gap: 3px;
+  }
+
+  .profile-pic {
+    width: 35px;
+    height: 35px;
+  }
+
+  .turn-indicator {
+    font-size: 8px;
+    padding: 2px 5px;
+    top: -6px;
+    right: -6px;
+  }
+}
+
+/* Animation for smooth transitions */
+.gameContainer > * {
+  transition: all 0.3s ease-in-out;
+}
+
+.playerHand > *,
+.opponentHand > * {
+  transition: transform 0.2s ease;
+}
+
+.playerHand > *:hover,
+.opponentHand > *:hover {
+  transform: translateY(-5px);
+}
+.opponentHand {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-overflow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 35px;
+  height: 50px;
+  background: rgba(231, 76, 60, 0.9);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-left: 5px;
+  transition: all 0.3s ease;
+}
+
+.card-overflow:hover {
+  background: rgba(231, 76, 60, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.4);
+}

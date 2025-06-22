@@ -1,0 +1,51 @@
+.color-selector-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  width: 220px;
+  height: 220px;
+  transform: rotate(45deg);
+}
+
+.color-selector .button {
+  width: 100px;
+  height: 100px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.color-selector .button:hover {
+  transform: scale(1.1);
+}
+
+.color-selector .red {
+  background-color: red;
+}
+
+.color-selector .green {
+  background-color: green;
+}
+
+.color-selector .yellow {
+  background-color: yellow;
+}
+
+.color-selector .blue {
+  background-color: blue;
+}

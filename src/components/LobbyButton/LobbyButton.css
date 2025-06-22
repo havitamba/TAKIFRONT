@@ -1,0 +1,142 @@
+.lobby-card {
+  width: 100%;
+  min-height: 75px;
+  background: rgba(34, 197, 94, 0.15);
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.lobby-card:hover:not(:disabled) {
+  transform: scale(1.02);
+  background: rgba(34, 197, 94, 0.25);
+  border-color: rgba(34, 197, 94, 0.5);
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+.lobby-card:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.lobby-card.full {
+  background: rgba(107, 114, 128, 0.2);
+  border-color: rgba(107, 114, 128, 0.4);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.lobby-card.full:hover {
+  transform: none;
+  background: rgba(107, 114, 128, 0.2);
+  border-color: rgba(107, 114, 128, 0.4);
+  box-shadow: none;
+}
+
+.lobby-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  text-align: left;
+}
+
+.room-name {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #22c55e;
+  line-height: 1.2;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.lobby-card.full .room-name {
+  color: #6b7280;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.users-icon {
+  color: #16a34a;
+  flex-shrink: 0;
+}
+
+.lobby-card.full .users-icon {
+  color: #9ca3af;
+}
+
+.player-count {
+  font-size: 0.9rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.lobby-card.full .player-count {
+  color: #9ca3af;
+}
+
+.join-indicator {
+  display: flex;
+  align-items: center;
+}
+
+.status-badge {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-badge.available {
+  background: #22c55e;
+  color: white;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  animation: pulse-green 2s infinite;
+}
+
+.status-badge.full {
+  background: #6b7280;
+  color: white;
+}
+
+@keyframes pulse-green {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+  }
+}
+
+@media (max-width: 640px) {
+  .lobby-card {
+    padding: 14px 16px;
+    min-height: 70px;
+    margin-bottom: 10px;
+  }
+  
+  .room-name {
+    font-size: 1.125rem;
+  }
+  
+  .player-count {
+    font-size: 0.8125rem;
+  }
+  
+  .status-badge {
+    padding: 5px 10px;
+    font-size: 0.8125rem;
+  }
+}

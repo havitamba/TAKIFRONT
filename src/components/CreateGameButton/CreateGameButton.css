@@ -1,0 +1,55 @@
+.create-game-btn {
+  background: #22c55e;
+  color: white;
+  border: 3px solid #16a34a;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.create-game-btn:hover {
+  background: #16a34a;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.5);
+}
+
+.create-game-btn:active {
+  transform: scale(0.98);
+}
+
+.plus-icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.create-game-btn:hover .plus-icon {
+  transform: rotate(180deg);
+}
+
+.btn-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .create-game-btn {
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+    min-width: 140px;
+  }
+  
+  .plus-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
