@@ -6,10 +6,7 @@ import { useParams } from "react-router";
 
 function ChangeColorModal() {
   const setChangeColor = useSetAtom(changeColorAtom);
-  const change_color = new URL(
-    `../../assets/change_color_borderless.png`,
-    import.meta.url
-  ).href;
+
   const { id } = useParams();
 
   const handleColorClick = (color: string) => {

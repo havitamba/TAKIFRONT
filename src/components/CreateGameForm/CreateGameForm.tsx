@@ -1,4 +1,4 @@
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { gameFormAtom, nameAtom, profileAtom } from "../../store/atoms";
 
 import "./CreateGameForm.css";

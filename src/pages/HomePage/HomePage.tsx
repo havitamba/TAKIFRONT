@@ -24,9 +24,9 @@ function HomePage() {
   const name = useAtomValue(nameAtom);
   const navigate = useNavigate();
   const setJoin = useSetAtom(joiningAtom);
-  const [gameState, setGameState] = useAtom(gamestateAtom);
+  const setGameState = useSetAtom(gamestateAtom);
   const setMyRoom = useSetAtom(myRoomAtom);
-  const [profile, setProfile] = useAtom(profileAtom);
+  const profile = useAtomValue(profileAtom);
 
   useEffect(() => {
     setMyRoom(null);
