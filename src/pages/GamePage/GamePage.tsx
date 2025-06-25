@@ -40,49 +40,58 @@ function GamePage() {
   );
   const isCurrentPlayerTurn = gameState?.players[gameState?.turn].name === name;
 
+  const yourIndex = gameState?.players.findIndex((p) => p.name === name);
+
+  // Create reordered opponents starting from your position + 1
+  const reorderedOpponents = [];
+  if (gameState?.players && yourIndex !== undefined) {
+    for (let i = 1; i < gameState.players.length; i++) {
+      const nextIndex = (yourIndex + i) % gameState.players.length;
+      reorderedOpponents.push(gameState.players[nextIndex]);
+    }
+  }
+
   return !gameOver.winner ? (
     <div className="gameContainer">
       {/* Opponents Section */}
       <div className="opponentsSection">
-        {gameState?.players
-          .filter((player) => player.name != name)
-          .map((player, playerIndex) => (
-            <div
-              key={playerIndex}
-              className={`opponentContainer ${
-                gameState?.players[gameState?.turn].name === player.name
-                  ? "current-turn"
-                  : ""
-              }`}
-            >
-              <div className="playerInfo">
-                <img
-                  className="profile-pic"
-                  src={
-                    new URL(
-                      `../../assets/profiles/${
-                        player.profile ? player.profile : "default"
-                      }.jpg`,
-                      import.meta.url
-                    ).href
-                  }
-                  alt={`${player.name}'s profile`}
-                />
-                <div className="playerName">{player.name}</div>
-              </div>
-              <div className="opponentHand">
-                {Array.from(
-                  { length: Math.min(player.hand!, 10) },
-                  (_, index) => (
-                    <Card type="opp" key={index} />
-                  )
-                )}
-                {player.hand! > 10 && (
-                  <div className="card-overflow">+{player.hand! - 10}</div>
-                )}
-              </div>
+        {reorderedOpponents.map((player, playerIndex) => (
+          <div
+            key={playerIndex}
+            className={`opponentContainer ${
+              gameState?.players[gameState?.turn].name === player.name
+                ? "current-turn"
+                : ""
+            }`}
+          >
+            <div className="playerInfo">
+              <img
+                className="profile-pic"
+                src={
+                  new URL(
+                    `../../assets/profiles/${
+                      player.profile ? player.profile : "default"
+                    }.jpg`,
+                    import.meta.url
+                  ).href
+                }
+                alt={`${player.name}'s profile`}
+              />
+              <div className="playerName">{player.name}</div>
             </div>
-          ))}
+            <div className="opponentHand">
+              {Array.from(
+                { length: Math.min(player.hand!, 10) },
+                (_, index) => (
+                  <Card type="opp" key={index} />
+                )
+              )}
+              {player.hand! > 10 && (
+                <div className="card-overflow">+{player.hand! - 10}</div>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Center Game Area */}
