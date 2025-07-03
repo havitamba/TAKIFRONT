@@ -11,12 +11,14 @@ import { socketClient } from "../../utils/socketClient";
 import GameOver from "../../components/GameOver/GameOver";
 import "./GamePage.css";
 import ChangeColorModal from "../../components/ChangeColorModal/ChangeColorModal";
+import { useParams } from "react-router";
 
 function GamePage() {
   const [gameState, setGameState] = useAtom(gamestateAtom);
   const [gameOver, setGameOver] = useAtom(gameoverAtom);
   const name = useAtomValue(nameAtom);
   const changeColor = useAtomValue(changeColorAtom);
+  const { id } = useParams();
 
   useEffect(() => {
     socketClient.on("updateGame", ({ room }) => {
@@ -106,7 +108,16 @@ function GamePage() {
             <span className="cardLabel">Discard</span>
           </div>
         </div>
-        {isCurrentPlayerTurn && gameState.openTaki && <button>end taki</button>}
+        {isCurrentPlayerTurn && gameState.openTaki && (
+          <button
+            className="end-taki-button"
+            onClick={() => {
+              socketClient.emit("playCard", id, "endTaki");
+            }}
+          >
+            end taki
+          </button>
+        )}
       </div>
 
       {/* Player Hand Section */}
