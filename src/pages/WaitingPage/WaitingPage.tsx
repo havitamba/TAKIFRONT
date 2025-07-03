@@ -48,7 +48,6 @@ function WaitingPage() {
     socketClient.on("refreshWaitingRoom", (room) => {
       setMyRoom(room);
       setIsConnected(true);
-      console.log(room);
     });
 
     socketClient.on("updateGame", ({ room }) => {
@@ -56,7 +55,6 @@ function WaitingPage() {
       navigate(`/game/${room.id}`);
       const { id, ...game } = room;
       setGameState(game);
-      console.log(game);
     });
 
     socketClient.on("connect", () => setIsConnected(true));

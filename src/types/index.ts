@@ -24,6 +24,7 @@ export interface gamestateinterface {
   discard: CardInterface;
   myId: string;
   turn: number;
+  openTaki: boolean;
   // myTurn: boolean;
 }
 export interface GameOverInterface {

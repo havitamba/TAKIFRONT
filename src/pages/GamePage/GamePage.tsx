@@ -106,6 +106,7 @@ function GamePage() {
             <span className="cardLabel">Discard</span>
           </div>
         </div>
+        {isCurrentPlayerTurn && gameState.openTaki && <button>end taki</button>}
       </div>
 
       {/* Player Hand Section */}
