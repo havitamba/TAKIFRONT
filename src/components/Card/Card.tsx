@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { changeColorAtom, gamestateAtom } from "../../store/atoms";
 import type { CardInterface } from "../../types";
 import { socketClient } from "../../utils/socketClient";
+import "./Card.css";
 
 function Card({ card, type }: { card?: CardInterface; type?: string }) {
   const gameState = useAtomValue(gamestateAtom);

@@ -1,4 +1,10 @@
 .card {
-	height: 200px;
-	width: auto;
+  height: 100px;
+  width: auto;
+}
+@media (max-height: 750px) {
+  .card {
+    height: 10vh;
+    width: auto;
+  }
 }
